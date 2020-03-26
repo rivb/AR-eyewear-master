@@ -12,20 +12,28 @@ eyepair_cascade = cv2.CascadeClassifier("Haarcascades/haarcascade_mcs_eyepair_bi
 # Load glasses image. The parameter -1 reads also de alpha channel (if exists)
 # Open 'glasses.sgv' to see more glasses that can be used
 # Therefore, the loaded image has four channels (Blue, Green, Red, Alpha):
-img_glasses = cv2.imread('glasses.png', -1)
 
-# Create the mask for the glasses:
-img_glasses_mask = img_glasses[:, :, 3]
-# cv2.imshow("img glasses mask", img_glasses_mask)
+img_glass = []
+lentes = ['0.png','1.png','2.png','3.png','4.png']
 
-# Convert glasses image to BGR (eliminate alpha channel):
-img_glasses = img_glasses[:, :, 0:3]
 
-# You can use a test image to adjust the ROIS:
-test_face = cv2.imread("face_test.png")
+for n in lentes:
+
+    img_glasses=cv2.imread(n, -1)
+    # Create the mask for the glasses:
+    img_glasses_mask = img_glasses[:, :, 3]
+    # cv2.imshow("img glasses mask", img_glasses_mask)
+
+    # Convert glasses image to BGR (eliminate alpha channel):
+    img_glasses = img_glasses[:, :, 0:3]
+    img_glass.append(img_glasses)
 
 # Create VideoCapture object to get images from the webcam:
-video_capture = cv2.VideoCapture(0)
+video_capture = cv2.VideoCapture(2)
+click = 0
+
+cv2.namedWindow("image")
+cv2.setMouseCallback("image", click_and_crop)
 
 while True:
     # Capture frame from the VideoCapture object:
@@ -68,10 +76,13 @@ while True:
 
             # Draw a rectangle to see where the glasses will be placed (debugging purposes):
             # cv2.rectangle(roi_color, (x1, y1), (x2, y2), (0, 255, 255), 2)
-
             # Calculate the width and height of the image with the glasses:
             img_glasses_res_width = int(x2 - x1)
             img_glasses_res_height = int(y2 - y1)
+
+            click_and_change
+            if click == 0:
+                img_glasses = img_glass[click]
 
             # Resize the mask to be equal to the region were the glasses will be placed:
             mask = cv2.resize(img_glasses_mask, (img_glasses_res_width, img_glasses_res_height))
