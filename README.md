@@ -10,4 +10,4 @@ Right now the app is running OK but with some major issues that needs to be solv
 
 1.- The model struggles to keep tracking the faces when turning to the sides and this is a must.
 
-2.- Wrap everything into a web-based app using a framwork like Flask or Django
+2.- Wrap everything into a web-based app using a framework like Flask or Django
