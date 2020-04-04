@@ -24,7 +24,7 @@ lens.py : virtual glasses try-on.
 
 # Resources
 
-1.- Haar Cascades and Face Detection 
-https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html
+1.- [Haar Cascades and Face Detection ](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html
+)
 
 
