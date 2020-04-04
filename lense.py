@@ -1,7 +1,3 @@
-"""
-Snapchat-based augmented reality OpenCV glasses overlay
-"""
-
 # Import required packages:
 import cv2
 
@@ -9,13 +5,14 @@ import cv2
 face_cascade = cv2.CascadeClassifier("Haarcascades/haarcascade_frontalface_default.xml")
 eyepair_cascade = cv2.CascadeClassifier("Haarcascades/haarcascade_mcs_eyepair_big.xml")
 
-# Load glasses image. The parameter -1 reads also de alpha channel (if exists)
-# Open 'glasses.sgv' to see more glasses that can be used
-# Therefore, the loaded image has four channels (Blue, Green, Red, Alpha):
+# Load glasses image.
 
 img_glass = []
-lentes = ['0.png','1.png','2.png','3.png','4.png']
+glasses = ['0.png','1.png','2.png','3.png','4.png']
 
+# Convert each glass image in the glasses list
+# This way every time that we click on the window the glass will change. Still not finished.
+# Maybe in the app would not be necessary this way (?)
 
 for n in lentes:
 
@@ -36,11 +33,9 @@ cv2.namedWindow("image")
 cv2.setMouseCallback("image", click_and_crop)
 
 while True:
+
     # Capture frame from the VideoCapture object:
     ret, frame = video_capture.read()
-
-    # Just for debugging purposes and to adjust the ROIS:
-    # frame = test_face.copy()
 
     # Convert frame to grayscale:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -50,10 +45,10 @@ while True:
 
     # Iterate over each detected face:
     for (x, y, w, h) in faces:
-        # Draw a rectangle to see the detected face (debugging purposes):
-        # cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 255, 0), 2)
 
-        # Create the ROIS based on the size of the detected face:
+        # Create the ROI (Region of Interest ) based on the size of the detected face:
+	# https://codeyarns.com/2014/05/09/how-to-work-with-roi-in-opencv/ 
+
         roi_gray = gray[y:y + h, x:x + w]
         roi_color = frame[y:y + h, x:x + w]
 
@@ -62,8 +57,6 @@ while True:
 
         # Iterate over the detected eyepairs (inside the face):
         for (ex, ey, ew, eh) in eyepairs:
-            # Draw a rectangle to see the detected eyepair (debugging purposes):
-            # cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (255, 0, 255), 2)
 
             # Calculate the coordinates where the glasses will be placed:
             x1 = int(ex - ew / 10)
@@ -74,8 +67,6 @@ while True:
             if x1 < 0 or x2 < 0 or x2 > w or y2 > h:
                 continue
 
-            # Draw a rectangle to see where the glasses will be placed (debugging purposes):
-            # cv2.rectangle(roi_color, (x1, y1), (x2, y2), (0, 255, 255), 2)
             # Calculate the width and height of the image with the glasses:
             img_glasses_res_width = int(x2 - x1)
             img_glasses_res_height = int(y2 - y1)
@@ -99,10 +90,6 @@ while True:
             # Create ROI background and ROI foreground:
             roi_bakground = cv2.bitwise_and(roi, roi, mask=mask_inv)
             roi_foreground = cv2.bitwise_and(img, img, mask=mask)
-
-            # Show both roi_bakground and roi_foreground (debugging purposes):
-            # cv2.imshow('roi_bakground', roi_bakground)
-            # cv2.imshow('roi_foreground', roi_foreground)
 
             # Add roi_bakground and roi_foreground to create the result:
             res = cv2.add(roi_bakground, roi_foreground)
