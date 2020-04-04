@@ -11,3 +11,9 @@ Right now the app is running OK but with some major issues that needs to be solv
 1.- The model struggles to keep tracking the eyepairs when turning to the sides and this is a must. The model use is an Machine Learning aproach that works pretty good but maybe we could use a Deep Learning aproach.
 
 2.- Wrap everything into a web-based app using a framework like Flask or Django
+
+# Files
+
+click_and_change.py ---> function to click on window and change frames ( still not finished )
+face.py ----> face detection using Haar-Cascades.
+lens.py ----> virtual glasses try-on.
