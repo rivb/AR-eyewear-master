@@ -14,6 +14,8 @@ Right now the app is running OK but with some major issues that needs to be solv
 
 # Files
 
-click_and_change.py ---> function to click on window and change frames ( still not finished )
-face.py ----> face detection using Haar-Cascades.
-lens.py ----> virtual glasses try-on.
+click_and_change.py : function to click on window and change frames ( still not finished )
+
+face.py : face detection using Haar-Cascades.
+
+lens.py : virtual glasses try-on.
