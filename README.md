@@ -6,6 +6,11 @@ Before developing this experiment the team did a mini round of interviews reachi
 
 This demo runs on Python using the OpenCV library for Face Recognition using Haar-Cascades to track the faces and apply the filters.
 
+Why Haar-Cascades?
+
+In this stage we need something cheap and simple, OpenCV with this library the implementation is fast and we can break and fix the code without much problems, the documentation is pretty clear and there are a lot of projects around to get some inspiration. We don't want to waste code so using this simple traditional method to detect faces was one of the best choices.
+
+
 Right now the app is running OK but with some major issues that needs to be solved.
 
 1.- The model struggles to keep tracking the eyepairs when turning to the sides and this is a must. The model use is an Machine Learning aproach that works pretty good but maybe we could use a Deep Learning aproach.
@@ -13,6 +18,8 @@ Right now the app is running OK but with some major issues that needs to be solv
 2.- Wrap everything into a web-based app using a framework like Flask or Django
 
 3.- Load more glasses models (Brands?)
+
+
 
 # Files
 
