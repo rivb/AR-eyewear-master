@@ -12,6 +12,8 @@ Right now the app is running OK but with some major issues that needs to be solv
 
 2.- Wrap everything into a web-based app using a framework like Flask or Django
 
+3.- Load more glasses models (Brands?)
+
 # Files
 
 click_and_change.py : function to click on window and change frames ( still not finished )
