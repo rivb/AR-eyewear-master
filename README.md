@@ -8,6 +8,6 @@ This demo runs on Python using the OpenCV library for Face Recognition using Haa
 
 Right now the app is running OK but with some major issues that needs to be solved.
 
-1.- The model struggles to keep tracking the faces when turning to the sides and this is a must.
+1.- The model struggles to keep tracking the eyepairs when turning to the sides and this is a must. The model use is an Machine Learning aproach that works pretty good but maybe we could use a Deep Learning aproach.
 
 2.- Wrap everything into a web-based app using a framework like Flask or Django
