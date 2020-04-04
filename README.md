@@ -19,3 +19,10 @@ click_and_change.py : function to click on window and change frames ( still not 
 face.py : face detection using Haar-Cascades.
 
 lens.py : virtual glasses try-on.
+
+# Resources
+
+1.- Haar Cascades and Face Detection 
+https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html
+
+
